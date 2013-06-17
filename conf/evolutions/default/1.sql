@@ -1,0 +1,16 @@
+# Tasks schema
+
+# --- !Ups
+
+CREATE SEQUENCE task_id_seq;
+CREATE TABLE lesson (
+    id integer NOT NULL DEFAULT nextval('task_id_seq'),
+    name varchar(200),
+    score integer(40) DEFAULT 0
+);
+
+# --- !Downs
+
+DROP TABLE lesson;
+DROP SEQUENCE task_id_seq;
+

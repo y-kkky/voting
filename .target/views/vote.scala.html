@@ -1,0 +1,16 @@
+@(lessons: List[Lesson])
+
+@import helper._
+
+@main("Рейтинг:") {    
+    <table style="font-size: 40px; padding: 5px;">
+            <tr style="font-weight: bold; color: red;"><td>Назва предмету</td><td>Кількість голосів</td></tr>
+        
+        @lessons.map { lesson =>
+<tr>
+                <td>@lesson.name</td>    
+                <td align=center>@lesson.score</td>
+            </tr>
+        }
+    </table>    
+}

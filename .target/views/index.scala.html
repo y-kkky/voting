@@ -1,0 +1,35 @@
+@(lessons: List[Lesson], lessonForm: Form[(String)])(implicit flash: Flash)
+@import helper._
+@main(title = "Вибір") {
+<div style="text-align: center; float: center;">
+    <!--  <h1>Зроби правильний вибір</h1>-->
+    <!-- Первый блок -->
+    <div id="flash">@flash.get("success")</div>
+    
+    <!-- Второй блок -->
+    <div id="main">
+	<label id="blablabla" style="font-size: 25px;">Оберіть предмет, виступ представників якого вам найбільше сподобався:</label><br>
+	<br><br><table align=center border=0 style="text-align:left; font-size: 22px;">
+	<tr style="color: red;"><td>Назва предмету</td><td>Голосувати</td></tr>
+	@lessons.map { lesson =>	
+		<tr><td>@lesson.name</td>	
+	    <td>@form(routes.Application.voteAc(lesson.id)) {
+	    <button type="submit"><img src="@routes.Assets.at("images/done.png")"/></button>	
+	    }	    </td>
+    }
+    </table>
+	</div>
+</div>
+    <!-- <script>
+    function reloadAfter(){
+		flash_div = getElementById("flash");
+		console.log(flash_div);
+		if(flash_div.innerHTML = ""){
+			location.reload();
+		}else{
+			location.reload();
+		}
+    }
+    setTimeout("reloadAfter();", 3000);
+</script> -->
+}
